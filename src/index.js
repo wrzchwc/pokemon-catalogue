@@ -1,7 +1,20 @@
 import React from 'react';
 import * as ReactDOMClient from 'react-dom/client';
 import App from './App';
+import thunk from 'redux-thunk';
+import {createStore} from "redux";
+import {applyMiddleware} from "redux";
+import {compose} from "redux";
+import {Provider} from 'react-redux';
+import reducers from './reducers';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
 
 const container = document.getElementById('root');
 const root = ReactDOMClient.createRoot(container);
-root.render(<App/>);
+root.render(
+    <Provider store={store}>
+        <App/>
+    </Provider>
+);
