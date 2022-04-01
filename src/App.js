@@ -8,18 +8,16 @@ import theme from './ui/Theme';
 
 const App = () => {
     return (
-        <React.Fragment style={{minHeight: '100%', position: 'relative'}}>
-            <ThemeProvider theme={theme}>
-                <BrowserRouter>
-                    <Header/>
-                    <Routes>
-                        <Route path={"/"} element={<Home/>}/>
-                        <Route path={"*"} element={<Navigate to={"/"}/>}/>
-                    </Routes>
-                    <Footer/>
-                </BrowserRouter>
-            </ThemeProvider>
-        </React.Fragment>
+        <ThemeProvider theme={theme}>
+            <BrowserRouter>
+                <Header/>
+                <Routes>
+                    <Route path={"/"} element={<Home/>}/>
+                    <Route path={"*"} element={<Navigate to={"/"}/>}/>
+                </Routes>
+                <Footer/>
+            </BrowserRouter>
+        </ThemeProvider>
     );
 }
 
