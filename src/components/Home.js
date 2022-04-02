@@ -2,10 +2,15 @@ import React from 'react';
 import {useEffect} from "react";
 import {connect} from "react-redux";
 import {fetchPokemon} from "../actions";
-import {Button, Fab} from "@mui/material";
+import {Button, Fab, Grid} from "@mui/material";
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import PokemonCard from "./PokemonCard";
+import {useTheme} from "@mui/styles";
+import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
 
 const Home = ({fetchPokemon, ...props}) => {
+    const theme = useTheme();
+
     useEffect(() => {
         for (let i = 1; i <= 20; i++) {
             fetchPokemon(i);
@@ -14,22 +19,44 @@ const Home = ({fetchPokemon, ...props}) => {
 
 
     return (
-        <div style={{minHeight: 'calc(100vh - 13em)'}}>
-            Home
-            <Button
-                size={'large'}
-                variant={'contained'}
-                color={'secondary'}
-                disableFocusRipple
-                onClick={() => {
-                    const offset = props.pokemons.length;
-                    for (let i = offset + 1; i <= offset + 5; i++) {
-                        fetchPokemon(i);
-                    }
-                }}
-            >
-                MORE POKEMONS
-            </Button>
+        <Grid
+            container
+            direction={'column'}
+            justifyContent={'flex-start'}
+            alignItems={'center'}
+            style={{minHeight: 'calc(100vh - 13em)'}}
+        >
+            {
+                props.pokemons.length > 20 ?
+                    <>
+                        <Grid item>
+                            <PokemonCard pokemon={props.pokemons[0]}/>
+                        </Grid>
+                    </>
+                    : undefined
+            }
+
+            <Grid item container justifyContent={'center'} alignItems={'center'}>
+                <Button
+                    size={'large'}
+                    variant={'contained'}
+                    color={'secondary'}
+                    disableFocusRipple
+                    sx={{
+                        marginBottom: '2.5em',
+                        color: theme.palette.info.main
+                    }}
+                    onClick={() => {
+                        const offset = props.pokemons.length;
+                        for (let i = offset + 1; i <= offset + 5; i++) {
+                            fetchPokemon(i);
+                        }
+                    }}
+                    startIcon={<CatchingPokemonIcon color={'primary'}/>}
+                >
+                    MORE POKEMONS
+                </Button>
+            </Grid>
             <Fab
                 color="secondary"
                 aria-label="add"
@@ -40,7 +67,7 @@ const Home = ({fetchPokemon, ...props}) => {
             >
                 <ArrowUpwardIcon sx={{color: 'red'}}/>
             </Fab>
-        </div>
+        </Grid>
     );
 }
 
