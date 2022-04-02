@@ -1,15 +1,15 @@
 import React from 'react';
 import {useEffect} from "react";
 import {connect} from "react-redux";
-import {fetchPokemons} from "../actions";
+import {initPokemons} from "../actions";
+import {fetchMore} from "../actions";
 import {Button} from "@mui/material";
 
-const Home = ({fetchPokemons, ...props}) => {
+const Home = ({initPokemons, ...props}) => {
     useEffect(() => {
-        fetchPokemons(20);
-    }, [fetchPokemons]);
+        initPokemons();
+    }, [initPokemons]);
 
-    console.log(props.pokemons);
 
     return (
         <div style={{minHeight: 'calc(100vh - 13em)'}}>
@@ -19,7 +19,7 @@ const Home = ({fetchPokemons, ...props}) => {
                 variant={'contained'}
                 color={'secondary'}
                 disableFocusRipple
-                onClick={() => fetchPokemons(props.count + 5)}
+                onClick={() => {props.fetchMore(props.count, 5)}}
             >
                 MORE POKEMONS
             </Button>
@@ -33,4 +33,4 @@ const mapStateToProps = state => {
         pokemons: state.pokedex.pokemons
     }
 }
-export default connect(mapStateToProps, {fetchPokemons})(Home);
+export default connect(mapStateToProps, {initPokemons, fetchMore})(Home);
