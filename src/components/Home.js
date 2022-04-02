@@ -17,6 +17,15 @@ const Home = ({fetchPokemon, ...props}) => {
         }
     }, [fetchPokemon]);
 
+    const pokemonCards = (
+        props.pokemons.map((p, index)=>{
+            return (
+                <Grid key={`p${index}`}>
+                    <PokemonCard pokemon={p}/>
+                </Grid>
+            )
+        })
+    )
 
     return (
         <Grid
@@ -26,16 +35,7 @@ const Home = ({fetchPokemon, ...props}) => {
             alignItems={'center'}
             style={{minHeight: 'calc(100vh - 13em)'}}
         >
-            {
-                props.pokemons.length > 20 ?
-                    <>
-                        <Grid item>
-                            <PokemonCard pokemon={props.pokemons[0]}/>
-                        </Grid>
-                    </>
-                    : undefined
-            }
-
+            <>{pokemonCards}</>
             <Grid item container justifyContent={'center'} alignItems={'center'}>
                 <Button
                     size={'large'}
