@@ -1,3 +1,1 @@
-export const INIT_POKEMONS = 'FETCH_POKEMONS';
 export const FETCH_POKEMON = 'FETCH_POKEMON';
-export const FETCH_MORE = 'FETCH_MORE';

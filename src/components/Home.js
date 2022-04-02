@@ -1,15 +1,16 @@
 import React from 'react';
 import {useEffect} from "react";
 import {connect} from "react-redux";
-import {initPokemons} from "../actions";
-import {fetchMore} from "../actions";
+import {fetchPokemon} from "../actions";
 import {Button, Fab} from "@mui/material";
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
-const Home = ({initPokemons, ...props}) => {
+const Home = ({fetchPokemon, ...props}) => {
     useEffect(() => {
-        initPokemons();
-    }, [initPokemons]);
+        for (let i = 1; i <= 20; i++) {
+            fetchPokemon(i);
+        }
+    }, [fetchPokemon]);
 
 
     return (
@@ -21,7 +22,10 @@ const Home = ({initPokemons, ...props}) => {
                 color={'secondary'}
                 disableFocusRipple
                 onClick={() => {
-                    props.fetchMore(props.pokemons.length, 5);
+                    const offset = props.pokemons.length;
+                    for (let i = offset + 1; i <= offset + 5; i++) {
+                        fetchPokemon(i);
+                    }
                 }}
             >
                 MORE POKEMONS
@@ -43,4 +47,4 @@ const Home = ({initPokemons, ...props}) => {
 const mapStateToProps = state => {
     return {pokemons: state.pokedex.pokemons};
 }
-export default connect(mapStateToProps, {initPokemons, fetchMore})(Home);
+export default connect(mapStateToProps, {fetchPokemon})(Home);
