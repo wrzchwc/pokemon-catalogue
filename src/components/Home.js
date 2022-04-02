@@ -20,8 +20,7 @@ const Home = ({initPokemons, ...props}) => {
                 color={'secondary'}
                 disableFocusRipple
                 onClick={() => {
-                    console.log(props.count);
-                    props.fetchMore(props.count, 5);
+                    props.fetchMore(props.pokemons.length, 5);
                 }}
             >
                 MORE POKEMONS
@@ -31,9 +30,6 @@ const Home = ({initPokemons, ...props}) => {
 }
 
 const mapStateToProps = state => {
-    return {
-        count: state.pokedex.count,
-        pokemons: state.pokedex.pokemons
-    }
+    return {pokemons: state.pokedex.pokemons};
 }
 export default connect(mapStateToProps, {initPokemons, fetchMore})(Home);
