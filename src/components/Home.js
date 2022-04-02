@@ -19,7 +19,10 @@ const Home = ({initPokemons, ...props}) => {
                 variant={'contained'}
                 color={'secondary'}
                 disableFocusRipple
-                onClick={() => {props.fetchMore(props.count, 5)}}
+                onClick={() => {
+                    console.log(props.count);
+                    props.fetchMore(props.count, 5);
+                }}
             >
                 MORE POKEMONS
             </Button>

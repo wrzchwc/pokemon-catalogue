@@ -11,6 +11,7 @@ export const initPokemons = () => async dispatch => {
     dispatch({type: INIT_POKEMONS, payload: results});
     results.forEach(result => dispatch(fetchPokemon(result.url)));
 }
+
 export const fetchMore = (offset, limit) => async dispatch => {
     const response = await pokemon.get('/pokemon', {
             params: {

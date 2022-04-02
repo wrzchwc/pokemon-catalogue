@@ -11,11 +11,8 @@ export default (state = INITIAL_STYLE, action) => {
     switch (action.type) {
         case INIT_POKEMONS:
             return {...state, pokemons: action.payload, count: action.payload.length};
-        case FETCH_POKEMON: {
-            let fetchedItem = state.pokemons.find(pokemon => pokemon.url === action.url);
-            state.pokemons[state.pokemons.indexOf(fetchedItem)] = action.payload;
-            return {...state};
-        }
+        case FETCH_POKEMON:
+            return {...state, pokemons: state.pokemons.map(p => p.url === action.url ? action.payload : p)};
         case FETCH_MORE:
             return {pokemons: state.pokemons.concat(action.payload), count: state.count + action.payload.length};
         default:
