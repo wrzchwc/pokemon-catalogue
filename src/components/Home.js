@@ -3,7 +3,8 @@ import {useEffect} from "react";
 import {connect} from "react-redux";
 import {initPokemons} from "../actions";
 import {fetchMore} from "../actions";
-import {Button} from "@mui/material";
+import {Button, Fab} from "@mui/material";
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 const Home = ({initPokemons, ...props}) => {
     useEffect(() => {
@@ -25,6 +26,16 @@ const Home = ({initPokemons, ...props}) => {
             >
                 MORE POKEMONS
             </Button>
+            <Fab
+                color="secondary"
+                aria-label="add"
+                sx={{bottom: '9em', right: 24, position: 'fixed'}}
+                onClick={() => window.scroll(0, 0)}
+                size={'medium'}
+                disableRipple
+            >
+                <ArrowUpwardIcon sx={{color: 'red'}}/>
+            </Fab>
         </div>
     );
 }

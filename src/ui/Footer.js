@@ -20,9 +20,9 @@ const Footer = () => {
                 bottom: 0
             }}
         >
-            <Grid container justifyContent={'flex-end'} alignItems={'center'} style={{height: '100%'}}>
+            <Grid container justifyContent={'center'} alignItems={'center'} style={{height: '100%'}}>
                 <Grid item style={{marginRight: 24}}>
-                    <Tooltip title={"Source code"} placement={'left'} leaveDelay={125}>
+                    <Tooltip title={"Source code"} placement={'top'} leaveDelay={125} arrow>
                         <IconButton component={Link} to={"https://github.com/wrzchwc/pokemon-catalogue"} disableRipple>
                             <GitHubIcon fontSize={"large"} color={"secondary"}/>
                         </IconButton>
