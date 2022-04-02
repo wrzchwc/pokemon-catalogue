@@ -29,8 +29,15 @@ const PokemonDialog = (props) => {
             fullWidth
             PaperProps={{style: {backgroundColor: theme.palette.secondary.main}}}
         >
-            <DialogTitle sx={{fontSize: '3em'}}>{props.pokemon.name}</DialogTitle>
-            <DialogContent>
+            <DialogTitle
+                sx={{
+                    fontSize: '3em',
+                    color: theme.palette.primary.main
+                }}
+            >
+                {props.pokemon.name}
+            </DialogTitle>
+            <DialogContent sx={{color: theme.palette.info.main}}>
                 <Grid container direction={'column'} alignItems={'center'}>
                     <Grid item container>
                         <Grid
@@ -59,6 +66,8 @@ const PokemonDialog = (props) => {
                     disableRipple
                     color={'info'}
                     variant={'contained'}
+                    size={'large'}
+                    sx={{color: theme.palette.secondary.main}}
                 >
                     CLOSE
                 </Button>

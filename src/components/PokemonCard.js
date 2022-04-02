@@ -60,6 +60,7 @@ const PokemonCard = (props) => {
                         sx={{color: theme.palette.secondary.main}}
                         disableRipple
                         onClick={()=>setDialogOpen(true)}
+                        size={'large'}
                     >
                         DETAILS
                     </Button>
