@@ -21,7 +21,7 @@ const PokemonDialog = (props) => {
         props.pokemon.types.map((t, index) => {
             return (
                 <Grid item key={`${props.pokemon.name}T${index}`}>
-                    <Typography variant={matchesMD ? 'h5' : 'h3'}>{t.type.name}</Typography>
+                    <Typography variant={matchesMD ? 'h4' : 'h3'}>{t.type.name}</Typography>
                 </Grid>
             );
         })
@@ -32,8 +32,21 @@ const PokemonDialog = (props) => {
             .filter(sprite => sprite)
             .map((url, index) => {
                 return (
-                    <Grid item key={`${props.pokemon.name}S${index}`}>
-                        <Sprite src={url} style={{height: 96, width: 96}}/>
+                    <Grid
+                        item
+                        key={`${props.pokemon.name}S${index}`}
+                        style={{
+                            maxHeight: matchesSM ? 80 : matchesMD ? 88 : 96,
+                            maxWidth: matchesSM ? 80 : matchesMD ? 88 : 96
+                        }}
+                    >
+                        <Sprite
+                            src={url}
+                            style={{
+                                height: '100%',
+                                width: '100%'
+                            }}
+                        />
                     </Grid>
                 );
             })
