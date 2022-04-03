@@ -6,10 +6,19 @@ import {Button} from "@mui/material";
 import {useTheme} from "@mui/styles";
 import Sprite from "./Sprite";
 import PokemonDialog from "./dialog/PokemonDialog";
+import {makeStyles} from "@mui/styles";
+
+const useStyles = makeStyles(() => ({
+    card: {
+        maxWidth: '70em',
+        width: '100%'
+    }
+}))
 
 const PokemonCard = (props) => {
     const theme = useTheme();
-    const [dialogOpen, setDialogOpen]=useState(false);
+    const classes = useStyles();
+    const [dialogOpen, setDialogOpen] = useState(false);
 
     const types = (
         props.pokemon.types.map((t, index) => {
@@ -38,8 +47,7 @@ const PokemonCard = (props) => {
             <Card
                 variant={'outlined'}
                 sx={{
-                    mb: '1em',
-                    width: '70em',
+                    mb: '0.5em',
                     backgroundColor: theme.palette.secondary.main,
                     color: theme.palette.info.main,
                 }}
@@ -59,7 +67,7 @@ const PokemonCard = (props) => {
                         color={'info'}
                         sx={{color: theme.palette.secondary.main}}
                         disableRipple
-                        onClick={()=>setDialogOpen(true)}
+                        onClick={() => setDialogOpen(true)}
                         size={'large'}
                     >
                         DETAILS

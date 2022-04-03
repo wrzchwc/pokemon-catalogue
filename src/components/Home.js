@@ -20,7 +20,7 @@ const Home = ({fetchPokemon, ...props}) => {
     const pokemonCards = (
         props.pokemons.map((p, index)=>{
             return (
-                <Grid key={`p${index}`}>
+                <Grid item key={`p${index}`} style={{maxWidth: '70em', width: '100%'}} sx={{px: '0.5em'}}>
                     <PokemonCard pokemon={p}/>
                 </Grid>
             )
@@ -58,14 +58,14 @@ const Home = ({fetchPokemon, ...props}) => {
                 </Button>
             </Grid>
             <Fab
-                color="secondary"
+                color="info"
                 aria-label="add"
                 sx={{bottom: '9em', right: 24, position: 'fixed'}}
                 onClick={() => window.scroll(0, 0)}
                 size={'medium'}
                 disableRipple
             >
-                <ArrowUpwardIcon sx={{color: 'red'}}/>
+                <ArrowUpwardIcon sx={{color: theme.palette.common.yellow}}/>
             </Fab>
         </Grid>
     );

@@ -9,10 +9,12 @@ import PokemonStatistic from "./PokemonStatistic";
 import {useTheme} from "@mui/styles";
 import getObjectValues from "../../ui/values";
 import Sprite from "../Sprite";
+import {useMediaQuery} from "@mui/material";
 
 
 const PokemonDialog = (props) => {
     const theme = useTheme();
+    const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
 
     const types = (
         props.pokemon.types.map((t, index) => {
@@ -43,6 +45,7 @@ const PokemonDialog = (props) => {
             maxWidth={'xl'}
             fullWidth
             PaperProps={{style: {backgroundColor: theme.palette.secondary.main}}}
+            fullScreen={matchesSM}
         >
             <DialogTitle
                 sx={{
@@ -78,7 +81,7 @@ const PokemonDialog = (props) => {
                             <Typography variant={'h4'}>sprites</Typography>
                         </Grid>
                     </Grid>
-                    <Grid item container wrap={'wrap'} justifyContent={'flex-start'} alignItems={'center'}>{sprites}</Grid>
+                    <Grid item container wrap={'wrap'} justifyContent={'space-evenly'} alignItems={'center'}>{sprites}</Grid>
                 </Grid>
             </DialogContent>
             <DialogActions>
