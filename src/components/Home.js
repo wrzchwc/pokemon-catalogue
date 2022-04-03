@@ -10,9 +10,14 @@ import {useTheme} from "@mui/styles";
 import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import getObjectValues from "../functions/values";
+import {useMediaQuery} from "@mui/material";
 
 const Home = ({fetchPokemon, ...props}) => {
     const theme = useTheme();
+    const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
+    const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
+
+
     const [query, setQuery] = useState('');
     const [filter, setFilter] = useState('');
 
@@ -23,7 +28,7 @@ const Home = ({fetchPokemon, ...props}) => {
 
     const renderPokemonCards = () => {
         const matchingType = props.pokemons.filter(pokemon => getObjectValues(pokemon.types)
-            .filter(value => ((typeof value !== 'number')&&(!value.includes('https://pokeapi.co/api/v2/type'))))
+            .filter(value => ((typeof value !== 'number') && (!value.includes('https://pokeapi.co/api/v2/type'))))
             .some(type => type.includes(filter)));
 
         return props.pokemons.filter(p => p.name.includes(filter) || matchingType.includes(p)).map((p, index) => {
@@ -55,6 +60,7 @@ const Home = ({fetchPokemon, ...props}) => {
                             label={'filter'}
                             sx={{my: '1em'}}
                             value={query}
+                            size={matchesSM ? 'small' : matchesMD ? 'medium' : 'large'}
                             onChange={event => setQuery(event.target.value)}
                             type={'text'}
                             InputProps={{
@@ -74,7 +80,7 @@ const Home = ({fetchPokemon, ...props}) => {
                 <>{renderPokemonCards()}</>
                 <Grid item container justifyContent={'center'} alignItems={'center'}>
                     <Button
-                        size={'large'}
+                        size={matchesSM ? 'small' : matchesMD ? 'medium' : 'large'}
                         variant={'contained'}
                         color={'secondary'}
                         disableFocusRipple
@@ -99,7 +105,7 @@ const Home = ({fetchPokemon, ...props}) => {
                 aria-label="add"
                 sx={{bottom: '7.5em', right: 16, position: 'fixed'}}
                 onClick={() => window.scroll(0, 0)}
-                size={'medium'}
+                size={matchesSM ? 'small' : 'medium'}
                 disableRipple
             >
                 <ArrowUpwardIcon sx={{color: theme.palette.common.yellow}}/>
