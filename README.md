@@ -3,7 +3,7 @@ Pokemon data essentials - must-have for all Poké Fans!
 
 The application is [available online](https://pokemoncatalogue.netlify.app/).
 
-##Application features
+## Application features
 
 - basic Pokemon information (name, type/types, height, weight, base experience)
 - sprites (both common and rare)
