@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
-import Home from './components/Home'
+import Home from './components/landing-page/Home'
 import Header from "./ui/Header";
 import Footer from "./ui/Footer";
 import {ThemeProvider} from "@mui/material";

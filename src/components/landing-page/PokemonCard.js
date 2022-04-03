@@ -4,8 +4,8 @@ import {Card, CardContent, CardHeader, Grid, Typography} from "@mui/material";
 import {CardActions} from "@mui/material";
 import {Button} from "@mui/material";
 import {useTheme} from "@mui/styles";
-import Sprite from "./Sprite";
-import PokemonDialog from "./dialog/PokemonDialog";
+import Sprite from "../shared/Sprite";
+import PokemonDialog from "../dialog/PokemonDialog";
 import {useMediaQuery} from "@mui/material";
 
 const PokemonCard = (props) => {

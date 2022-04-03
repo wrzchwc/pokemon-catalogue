@@ -2,14 +2,14 @@ import React from 'react';
 import {useState} from "react";
 import {useEffect} from "react";
 import {connect} from "react-redux";
-import {fetchPokemon} from "../actions";
+import {fetchPokemon} from "../../actions";
 import {Button, Fab, Grid, InputAdornment, TextField} from "@mui/material";
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import PokemonCard from "./PokemonCard";
 import {useTheme} from "@mui/styles";
 import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import getObjectValues from "../functions/values";
+import getObjectValues from "../../functions/values";
 import {useMediaQuery} from "@mui/material";
 
 const Home = ({fetchPokemon, ...props}) => {
