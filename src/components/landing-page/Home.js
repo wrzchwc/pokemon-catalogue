@@ -61,7 +61,7 @@ const Home = ({fetchPokemon, ...props}) => {
                             sx={{mb: '1em'}}
                             value={query}
                             size={matchesSM ? 'small' : matchesMD ? 'medium' : 'large'}
-                            onChange={event => setQuery(event.target.value)}
+                            onChange={event => setQuery(event.target.value.toLowerCase())}
                             type={'text'}
                             InputProps={{
                                 startAdornment: (
