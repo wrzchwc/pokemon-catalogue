@@ -47,7 +47,7 @@ const Home = ({fetchPokemon, ...props}) => {
                 direction={'column'}
                 justifyContent={'flex-start'}
                 alignItems={'center'}
-                style={{minHeight: 'calc(100vh - 13em)'}}
+                style={{minHeight: `calc(100vh - ${matchesSM ? 11 : matchesMD ? 12.5 : 13}em)`}}
             >
                 <Grid item container justifyContent={'center'} alignItems={'center'}>
                     <Grid item style={{maxWidth: '70em', width: '100%'}} sx={{px: '1em'}}>
@@ -58,7 +58,7 @@ const Home = ({fetchPokemon, ...props}) => {
                             name={'filter'}
                             color={'info'}
                             label={'filter'}
-                            sx={{my: '1em'}}
+                            sx={{mb: '1em'}}
                             value={query}
                             size={matchesSM ? 'small' : matchesMD ? 'medium' : 'large'}
                             onChange={event => setQuery(event.target.value)}
@@ -80,14 +80,11 @@ const Home = ({fetchPokemon, ...props}) => {
                 <>{renderPokemonCards()}</>
                 <Grid item container justifyContent={'center'} alignItems={'center'}>
                     <Button
-                        size={matchesSM ? 'small' : matchesMD ? 'medium' : 'large'}
+                        size={matchesMD ? 'medium' : 'large'}
                         variant={'contained'}
                         color={'secondary'}
                         disableFocusRipple
-                        sx={{
-                            marginBottom: '0.5em',
-                            color: theme.palette.info.main
-                        }}
+                        sx={{color: theme.palette.info.main}}
                         onClick={() => {
                             const offset = props.pokemons.length;
                             for (let i = offset + 1; i <= offset + 5; i++) {
