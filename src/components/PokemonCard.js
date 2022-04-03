@@ -47,7 +47,7 @@ const PokemonCard = (props) => {
             <Card
                 variant={'outlined'}
                 sx={{
-                    mb: '0.5em',
+                    mb: '1em',
                     backgroundColor: theme.palette.secondary.main,
                     color: theme.palette.info.main,
                 }}

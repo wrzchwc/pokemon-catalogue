@@ -7,7 +7,7 @@ import {Button} from "@mui/material";
 import {Grid} from "@mui/material";
 import PokemonStatistic from "./PokemonStatistic";
 import {useTheme} from "@mui/styles";
-import getObjectValues from "../../ui/values";
+import getObjectValues from "../../functions/values";
 import Sprite from "../Sprite";
 import {useMediaQuery} from "@mui/material";
 

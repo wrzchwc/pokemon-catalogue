@@ -9,7 +9,7 @@ import PokemonCard from "./PokemonCard";
 import {useTheme} from "@mui/styles";
 import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import getObjectValues from "../ui/values";
+import getObjectValues from "../functions/values";
 
 const Home = ({fetchPokemon, ...props}) => {
     const theme = useTheme();
@@ -28,7 +28,7 @@ const Home = ({fetchPokemon, ...props}) => {
 
         return props.pokemons.filter(p => p.name.includes(filter) || matchingType.includes(p)).map((p, index) => {
             return (
-                <Grid item key={`p${index}`} style={{maxWidth: '70em', width: '100%'}} sx={{px: '0.5em'}}>
+                <Grid item key={`p${index}`} style={{maxWidth: '70em', width: '100%'}} sx={{px: '1em'}}>
                     <PokemonCard pokemon={p}/>
                 </Grid>
             )
@@ -45,7 +45,7 @@ const Home = ({fetchPokemon, ...props}) => {
                 style={{minHeight: 'calc(100vh - 13em)'}}
             >
                 <Grid item container justifyContent={'center'} alignItems={'center'}>
-                    <Grid item style={{maxWidth: '70em', width: '100%'}} sx={{px: '0.5em'}}>
+                    <Grid item style={{maxWidth: '70em', width: '100%'}} sx={{px: '1em'}}>
                         <TextField
                             fullWidth
                             placeholder={'query by name or type'}
@@ -53,7 +53,7 @@ const Home = ({fetchPokemon, ...props}) => {
                             name={'filter'}
                             color={'info'}
                             label={'filter'}
-                            sx={{my: '0.5em'}}
+                            sx={{my: '1em'}}
                             value={query}
                             onChange={event => setQuery(event.target.value)}
                             type={'text'}
@@ -79,7 +79,7 @@ const Home = ({fetchPokemon, ...props}) => {
                         color={'secondary'}
                         disableFocusRipple
                         sx={{
-                            marginBottom: '2.5em',
+                            marginBottom: '0.5em',
                             color: theme.palette.info.main
                         }}
                         onClick={() => {
@@ -97,7 +97,7 @@ const Home = ({fetchPokemon, ...props}) => {
             <Fab
                 color="info"
                 aria-label="add"
-                sx={{bottom: '9em', right: 24, position: 'fixed'}}
+                sx={{bottom: '7.5em', right: 16, position: 'fixed'}}
                 onClick={() => window.scroll(0, 0)}
                 size={'medium'}
                 disableRipple
