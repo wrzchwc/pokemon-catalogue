@@ -9,6 +9,7 @@ import PokemonCard from "./PokemonCard";
 import {useTheme} from "@mui/styles";
 import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import getObjectValues from "../ui/values";
 
 const Home = ({fetchPokemon, ...props}) => {
     const theme = useTheme();
@@ -20,15 +21,19 @@ const Home = ({fetchPokemon, ...props}) => {
         return () => clearTimeout(timeOutId);
     }, [query]);
 
-    const pokemonCards = (
-        props.pokemons.map((p, index) => {
+    const renderPokemonCards = () => {
+        const matchingType = props.pokemons.filter(pokemon => getObjectValues(pokemon.types)
+            .filter(value => ((typeof value !== 'number')&&(!value.includes('https://pokeapi.co/api/v2/type'))))
+            .some(type => type.includes(filter)));
+
+        return props.pokemons.filter(p => p.name.includes(filter) || matchingType.includes(p)).map((p, index) => {
             return (
                 <Grid item key={`p${index}`} style={{maxWidth: '70em', width: '100%'}} sx={{px: '0.5em'}}>
                     <PokemonCard pokemon={p}/>
                 </Grid>
             )
         })
-    )
+    }
 
     return (
         <>
@@ -51,6 +56,7 @@ const Home = ({fetchPokemon, ...props}) => {
                             sx={{my: '0.5em'}}
                             value={query}
                             onChange={event => setQuery(event.target.value)}
+                            type={'text'}
                             InputProps={{
                                 startAdornment: (
                                     <InputAdornment position="start">
@@ -65,7 +71,7 @@ const Home = ({fetchPokemon, ...props}) => {
                         />
                     </Grid>
                 </Grid>
-                <>{pokemonCards}</>
+                <>{renderPokemonCards()}</>
                 <Grid item container justifyContent={'center'} alignItems={'center'}>
                     <Button
                         size={'large'}
