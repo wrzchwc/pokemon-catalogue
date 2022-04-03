@@ -6,25 +6,24 @@ import {Button} from "@mui/material";
 import {useTheme} from "@mui/styles";
 import Sprite from "./Sprite";
 import PokemonDialog from "./dialog/PokemonDialog";
-import {makeStyles} from "@mui/styles";
-
-const useStyles = makeStyles(() => ({
-    card: {
-        maxWidth: '70em',
-        width: '100%'
-    }
-}))
+import {useMediaQuery} from "@mui/material";
 
 const PokemonCard = (props) => {
     const theme = useTheme();
-    const classes = useStyles();
     const [dialogOpen, setDialogOpen] = useState(false);
+    const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
+    const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
 
     const types = (
         props.pokemon.types.map((t, index) => {
             return (
                 <Grid key={`${props.pokemon.name}t${index}`}>
-                    <Typography variant={'h5'} sx={{color: theme.palette.primary.main}}>{t.type.name}</Typography>
+                    <Typography
+                        variant={matchesSM ? 'h6' : 'h5'}
+                        sx={{color: theme.palette.primary.main}}
+                    >
+                        {t.type.name}
+                    </Typography>
                 </Grid>
             );
         })
@@ -35,8 +34,21 @@ const PokemonCard = (props) => {
             .filter(value => value != null && typeof value !== "object")
             .map((url, index) => {
                 return (
-                    <Grid item key={`${props.pokemon.name}bs${index}`}>
-                        <Sprite src={url}/>
+                    <Grid
+                        item
+                        key={`${props.pokemon.name}bs${index}`}
+                        style={{
+                            maxHeight: matchesSM ? 80 : matchesMD ? 88 : 96,
+                            maxWidth: matchesSM ? 80 : matchesMD ? 88 : 96
+                        }}
+                    >
+                        <Sprite
+                            src={url}
+                            style={{
+                                height: '100%',
+                                width: '100%'
+                            }}
+                        />
                     </Grid>
                 );
             })
@@ -52,7 +64,10 @@ const PokemonCard = (props) => {
                     color: theme.palette.info.main,
                 }}
             >
-                <CardHeader title={props.pokemon.name} titleTypographyProps={{variant: 'h4'}}/>
+                <CardHeader
+                    title={props.pokemon.name}
+                    titleTypographyProps={{variant: matchesSM ? 'h5' : 'h4'}}
+                />
                 <CardContent>
                     <Grid container justifyContent={'space-evenly'} alignItems={'center'}>
                         <Grid item container xs={3} direction={'column'}>{types}</Grid>
@@ -68,7 +83,7 @@ const PokemonCard = (props) => {
                         sx={{color: theme.palette.secondary.main}}
                         disableRipple
                         onClick={() => setDialogOpen(true)}
-                        size={'large'}
+                        size={matchesSM ? 'small' : matchesSM ? 'medium' : 'large'}
                     >
                         DETAILS
                     </Button>
