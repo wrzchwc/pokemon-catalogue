@@ -112,9 +112,9 @@ const PokemonDialog = (props) => {
                     onClick={() => props.setOpen(false)}
                     disableRipple
                     color={'info'}
-                    variant={'contained'}
-                    size={matchesSM ? 'small' : matchesMD ? 'medium' : undefined}
-                    sx={{color: theme.palette.secondary.main}}
+                    variant={'outlined'}
+                    size={matchesMD ? 'medium' : 'large'}
+                    // sx={{color: theme.palette.secondary.main}}
                 >
                     CLOSE
                 </Button>

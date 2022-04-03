@@ -80,10 +80,10 @@ const PokemonCard = (props) => {
                     <Button
                         variant={'contained'}
                         color={'info'}
-                        sx={{color: theme.palette.secondary.main}}
+                        sx={{color: 'secondary.main'}}
                         disableRipple
                         onClick={() => setDialogOpen(true)}
-                        size={matchesSM ? 'small' : matchesSM ? 'medium' : 'large'}
+                        size={matchesMD ? 'medium' : 'large'}
                     >
                         DETAILS
                     </Button>
