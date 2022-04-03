@@ -1,12 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import Home from './components/Home'
 import Header from "./ui/Header";
 import Footer from "./ui/Footer";
 import {ThemeProvider} from "@mui/material";
 import theme from './ui/Theme';
+import {fetchPokemon} from "./actions";
+import {connect} from "react-redux";
 
-const App = () => {
+const App = ({fetchPokemon}) => {
+    useEffect(() => {
+        for (let i = 1; i <= 20; i++) {
+            fetchPokemon(i);
+        }
+    }, [fetchPokemon]);
+
     return (
         <ThemeProvider theme={theme}>
             <BrowserRouter>
@@ -21,4 +29,4 @@ const App = () => {
     );
 }
 
-export default App;
+export default connect(null, {fetchPokemon})(App);
