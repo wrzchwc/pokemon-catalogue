@@ -21,7 +21,7 @@ const PokemonDialog = (props) => {
         props.pokemon.types.map((t, index) => {
             return (
                 <Grid item key={`${props.pokemon.name}T${index}`}>
-                    <Typography variant={matchesMD ? 'h4' : 'h3'}>{t.type.name}</Typography>
+                    <Typography variant={matchesMD ? 'h5' : 'h3'}>{t.type.name}</Typography>
                 </Grid>
             );
         })
@@ -74,6 +74,7 @@ const PokemonDialog = (props) => {
                                 </Typography>
                             </Grid>
                         </Grid>
+                        <PokemonStatistic name={'base exp'} number={props.pokemon.base_experience}/>
                         <PokemonStatistic name={'height'} number={props.pokemon.height}/>
                         <PokemonStatistic name={'weight'} number={props.pokemon.weight}/>
                     </Grid>
