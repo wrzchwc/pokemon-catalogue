@@ -26,7 +26,7 @@ const Footer = () => {
             <Grid container justifyContent={'center'} alignItems={'center'} style={{height: '100%'}}>
                 <Grid item>
                     <Tooltip title={"Source code"} placement={'top'} leaveDelay={125}>
-                        <IconButton component={Link} to={"https://github.com/wrzchwc/pokemon-catalogue"} disableRipple>
+                        <IconButton href={"https://github.com/wrzchwc/pokemon-catalogue"} disableRipple>
                             <GitHubIcon fontSize={"large"} color={"secondary"}/>
                         </IconButton>
                     </Tooltip>

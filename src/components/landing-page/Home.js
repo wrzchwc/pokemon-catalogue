@@ -53,7 +53,7 @@ const Home = ({fetchPokemon, ...props}) => {
                     <Grid item style={{maxWidth: '70em', width: '100%'}} sx={{px: '1em'}}>
                         <TextField
                             fullWidth
-                            placeholder={'query by name or type'}
+                            placeholder={'filter by name or type'}
                             variant={'outlined'}
                             name={'filter'}
                             color={'info'}
