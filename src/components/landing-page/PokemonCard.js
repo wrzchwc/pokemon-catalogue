@@ -76,7 +76,7 @@ const PokemonCard = (props) => {
                         </Grid>
                     </Grid>
                 </CardContent>
-                <CardActions>
+                <CardActions sx={{p: '16px'}}>
                     <Button
                         variant={'contained'}
                         color={'info'}

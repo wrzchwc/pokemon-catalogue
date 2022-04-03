@@ -58,18 +58,19 @@ const PokemonDialog = (props) => {
             onClose={() => props.setOpen(false)}
             maxWidth={'xl'}
             fullWidth
-            PaperProps={{style: {backgroundColor: theme.palette.secondary.main}}}
+            PaperProps={{ sx: {bgcolor: 'secondary.main'}}}
             fullScreen={matchesSM}
         >
             <DialogTitle
                 sx={{
                     fontSize: matchesMD ? '2.75em' : '3em',
-                    color: theme.palette.primary.main
+                    color: 'primary.main',
+                    p: '24px'
                 }}
             >
                 {props.pokemon.name}
             </DialogTitle>
-            <DialogContent sx={{color: theme.palette.info.main}}>
+            <DialogContent sx={{color: 'info.main', p: '24px'}}>
                 <Grid container direction={'column'} alignItems={'center'}>
                     <Grid item container>
                         <Grid
@@ -107,7 +108,7 @@ const PokemonDialog = (props) => {
                     </Grid>
                 </Grid>
             </DialogContent>
-            <DialogActions>
+            <DialogActions sx={{p: '24px'}}>
                 <Button
                     onClick={() => props.setOpen(false)}
                     disableRipple
