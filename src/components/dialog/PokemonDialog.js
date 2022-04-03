@@ -15,12 +15,13 @@ import {useMediaQuery} from "@mui/material";
 const PokemonDialog = (props) => {
     const theme = useTheme();
     const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
+    const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
 
     const types = (
         props.pokemon.types.map((t, index) => {
             return (
                 <Grid item key={`${props.pokemon.name}T${index}`}>
-                    <Typography variant={'h3'}>{t.type.name}</Typography>
+                    <Typography variant={matchesMD ? 'h4' : 'h3'}>{t.type.name}</Typography>
                 </Grid>
             );
         })
@@ -49,7 +50,7 @@ const PokemonDialog = (props) => {
         >
             <DialogTitle
                 sx={{
-                    fontSize: '3em',
+                    fontSize: matchesMD ? '2.75em' : '3em',
                     color: theme.palette.primary.main
                 }}
             >
@@ -68,7 +69,7 @@ const PokemonDialog = (props) => {
                         >
                             <>{types}</>
                             <Grid item>
-                                <Typography variant={'h5'}>
+                                <Typography variant={matchesMD ? 'h6' : 'h5'}>
                                     {props.pokemon.types.length > 1 ? 'types' : 'type'}
                                 </Typography>
                             </Grid>
@@ -78,10 +79,18 @@ const PokemonDialog = (props) => {
                     </Grid>
                     <Grid item container justifyContent={'center'} alignItems={'center'}>
                         <Grid item sx={{mt: '2.5em'}}>
-                            <Typography variant={'h4'}>sprites</Typography>
+                            <Typography variant={matchesMD ? 'h5' : 'h4'}>sprites</Typography>
                         </Grid>
                     </Grid>
-                    <Grid item container wrap={'wrap'} justifyContent={'space-evenly'} alignItems={'center'}>{sprites}</Grid>
+                    <Grid
+                        item
+                        container
+                        wrap={'wrap'}
+                        justifyContent={'space-evenly'}
+                        alignItems={'center'}
+                    >
+                        {sprites}
+                    </Grid>
                 </Grid>
             </DialogContent>
             <DialogActions>
@@ -90,7 +99,7 @@ const PokemonDialog = (props) => {
                     disableRipple
                     color={'info'}
                     variant={'contained'}
-                    size={'large'}
+                    size={matchesSM ? 'small' : matchesMD ? 'medium' : undefined}
                     sx={{color: theme.palette.secondary.main}}
                 >
                     CLOSE
