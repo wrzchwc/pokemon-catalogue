@@ -7,6 +7,9 @@ import {Button} from "@mui/material";
 import {Grid} from "@mui/material";
 import PokemonStatistic from "./PokemonStatistic";
 import {useTheme} from "@mui/styles";
+import getObjectValues from "../../ui/values";
+import Sprite from "../Sprite";
+
 
 const PokemonDialog = (props) => {
     const theme = useTheme();
@@ -20,6 +23,18 @@ const PokemonDialog = (props) => {
             );
         })
     );
+
+    const sprites = (
+        getObjectValues(props.pokemon.sprites)
+            .filter(sprite => sprite)
+            .map((url, index) => {
+                return (
+                    <Grid item key={`${props.pokemon.name}S${index}`}>
+                        <Sprite src={url} style={{height: 96, width: 96}}/>
+                    </Grid>
+                );
+            })
+    )
 
     return (
         <Dialog
@@ -58,6 +73,12 @@ const PokemonDialog = (props) => {
                         <PokemonStatistic name={'height'} number={props.pokemon.height}/>
                         <PokemonStatistic name={'weight'} number={props.pokemon.weight}/>
                     </Grid>
+                    <Grid item container justifyContent={'center'} alignItems={'center'}>
+                        <Grid item sx={{mt: '2.5em'}}>
+                            <Typography variant={'h4'}>sprites</Typography>
+                        </Grid>
+                    </Grid>
+                    <Grid item container wrap={'wrap'} justifyContent={'flex-start'} alignItems={'center'}>{sprites}</Grid>
                 </Grid>
             </DialogContent>
             <DialogActions>

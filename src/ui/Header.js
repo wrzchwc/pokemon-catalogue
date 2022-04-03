@@ -15,7 +15,7 @@ const Header = () => {
                         to={"/"}
                         sx={{
                             textDecoration: 'none',
-                            fontSize: '3em',
+                            fontSize: '3.5em',
                             fontFamily: "'Bangers', cursive",
 
                         }}
